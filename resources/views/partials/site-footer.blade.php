@@ -15,7 +15,7 @@
                         <div class="level-item">
                             <a href="{{ $site->home() }}">
                                 <img
-                                    src="{{ asset($logo) }}"
+                                    src="{{ Storage::url($logo) }}"
                                     width="200"
                                     alt="{{ $site->name }} - {{ $site->description }}"
                                 />
