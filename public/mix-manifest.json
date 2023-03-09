@@ -1,0 +1,13 @@
+{
+    "/js/theme.js": "/js/theme.js",
+    "/css/theme.css": "/css/theme.css",
+    "/vendor/jquery/jquery.js": "/vendor/jquery/jquery.js",
+    "/vendor/jquery/jquery.min.js": "/vendor/jquery/jquery.min.js",
+    "/vendor/jquery/jquery.min.map": "/vendor/jquery/jquery.min.map",
+    "/vendor/aos/aos.css": "/vendor/aos/aos.css",
+    "/vendor/aos/aos.js": "/vendor/aos/aos.js",
+    "/vendor/stonehenge.js/stonehenge.css": "/vendor/stonehenge.js/stonehenge.css",
+    "/vendor/stonehenge.js/stonehenge.css.map": "/vendor/stonehenge.js/stonehenge.css.map",
+    "/vendor/stonehenge.js/stonehenge.js": "/vendor/stonehenge.js/stonehenge.js",
+    "/vendor/stonehenge.js/stonehenge.sass": "/vendor/stonehenge.js/stonehenge.sass"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "optimumweb/decorauvent",
+  "type": "library",
+  "description": "Mason CMS theme for Décor Au Vent",
+  "keywords": ["framework", "laravel", "cms", "mason", "theme", "decorauvent"],
+  "authors": [
+    {
+      "name": "Jonathan Roy",
+      "email": "jroy@optimumweb.ca",
+      "role": "developer"
+    }
+  ],
+  "license": "proprietary",
+  "require": {
+    "php": "^8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5.10"
+  },
+  "autoload": {
+    "psr-4": {}
+  },
+  "autoload-dev": {},
+  "scripts": {},
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
