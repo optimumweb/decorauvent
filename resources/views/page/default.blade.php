@@ -10,6 +10,8 @@
         class="section is-primary is-large is-cover is-inverted"
         style="{{ isset($entry->cover) ? "background-image: url({$entry->cover->url});" : '' }}"
     >
+        <div class="overlay is-primary"></div>
+
         <div class="container">
             <div class="columns">
                 <div class="column is-6">

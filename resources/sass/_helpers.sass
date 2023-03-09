@@ -1,146 +1,159 @@
 p
-  a
-    text-decoration: underline
+    a
+        text-decoration: underline
 
 .has-text-purple
-  color: $purple
+    color: $purple
 
 .title,
 .subtitle
-  font-family: $family-secondary
-  color: $blue
-  font-weight: $weight-bold
+    font-family: $family-secondary
+    color: $blue
+    font-weight: $weight-bold
 
-  &.is-2
-    text-transform: uppercase
+    &.is-2
+        text-transform: uppercase
 
-  &.is-4
-    color: $purple
-    text-transform: uppercase
+    &.is-4
+        color: $purple
+        text-transform: uppercase
 
 .lead
-  font-size: $size-2
-  font-weight: $weight-light
+    font-size: $size-2
+    font-weight: $weight-light
 
 .quote
-  font-style: italic
-  font-weight: $weight-light
+    font-style: italic
+    font-weight: $weight-light
 
 .menu
-  font-size: $size-normal
+    font-size: $size-normal
 
-  a
-    display: block
-    padding: 0.5em 1em
-
-  > ul
-    > li
-      position: relative
-      display: inline-block
-
-      &:last-child
-        margin-right: 0
-
-      > ul
-        display: none
-        position: absolute
-        top: 100%
-        left: 0
-        padding: 1rem
-        background-color: $primary
-        color: $white
-        border-radius: $radius-small
-        text-align: left
-        z-index: 1
-
-        > li
-          > a
-            color: $white
-
-      &:hover > ul
+    a
         display: block
+        padding: 0.5em 1em
+
+    > ul
+        > li
+            position: relative
+            display: inline-block
+
+            &:last-child
+                margin-right: 0
+
+            > ul
+                display: none
+                position: absolute
+                top: 100%
+                left: 0
+                padding: 1rem
+                background-color: $primary
+                color: $white
+                border-radius: $radius-small
+                text-align: left
+                z-index: 1
+
+                > li
+                    > a
+                        color: $white
+
+            &:hover > ul
+                display: block
 
 .section,
 .box
-  &.is-small
-    padding: 1rem 1.5rem
+    position: relative
 
-  &.is-inverted
-    color: $white
+    &.is-small
+        padding: 1rem 1.5rem
 
-    .title,
-    .subtitle
-      color: $white
-
-    a
-      color: $white
-
-    .button
-      &.is-bordered
-        background-color: transparent
+    &.is-inverted
         color: $white
-        border-color: $white
 
-  &.is-primary
-    background-color: $primary
+        .title,
+        .subtitle
+            color: $white
 
-  &.is-purple
-    background-color: $purple
+        a
+            color: $white
 
-  &.is-white-bis
-    background-color: $white-bis
+        .button
+            &.is-bordered
+                background-color: transparent
+                color: $white
+                border-color: $white
 
-  &.is-white-ter
-    background-color: $white-ter
+    &.is-primary
+        background-color: $primary
 
-  &.is-fullwidth
-    width: 100%
+    &.is-purple
+        background-color: $purple
 
-  &.is-hoverable
-    transition: all 420ms
+    &.is-white-bis
+        background-color: $white-bis
 
-    &:hover
-      background-color: $purple
-      color: $white
+    &.is-white-ter
+        background-color: $white-ter
 
-      img
-        filter: invert(1)
+    &.is-fullwidth
+        width: 100%
+
+    &.is-hoverable
+        transition: all 420ms
+
+        &:hover
+            background-color: $purple
+            color: $white
+
+            img
+                filter: invert(1)
 
 .container
-  &.is-medium
-    max-width: 44rem !important
+    &.is-medium
+        max-width: 44rem !important
 
-  &.is-narrow
-    max-width: 28rem !important
+    &.is-narrow
+        max-width: 28rem !important
 
 .button
-  &.is-purple
-    background-color: $purple
-    border-color: transparent
-    color: $white
+    &.is-purple
+        background-color: $purple
+        border-color: transparent
+        color: $white
 
-  &.is-bordered
-    border-color: $primary
+    &.is-bordered
+        border-color: $primary
 
 img
-  &.is-rounded
-    border-radius: $radius
+    &.is-rounded
+        border-radius: $radius
 
 .level
     +desktop
-      &.is-trifecta
-        > .level-item
-          &:first-child
-            justify-content: left
+        &.is-trifecta
+            > .level-item
+                &:first-child
+                    justify-content: left
 
-          &:last-child
-            justify-content: right
+                &:last-child
+                    justify-content: right
 
 .is-cover
-  background-size: cover
-  background-position: center center
-  background-repeat: no-repeat
+    background-size: cover
+    background-position: center center
+    background-repeat: no-repeat
+
+.overlay
+    opacity: 0.7
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+    &.is-primary
+        background-color: $primary
 
 figure
-  > figcaption
-    font-size: $size-7
+    > figcaption
+        font-size: $size-7
