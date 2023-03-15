@@ -7,15 +7,13 @@
 @section('content')
     <section class="section">
         <div class="container">
-            {{ $entryType }}
-
-            <ul>
+            <div class="columns is-multiline">
                 @foreach ($entries->paginate() as $entry)
-                    <li>
-                        {{ $entry }}
-                    </li>
+                    <div class="column is-4">
+                        @include('partials.post-preview')
+                    </div>
                 @endforeach
-            </ul>
+            </div>
         </div>
     </section>
 @endsection
