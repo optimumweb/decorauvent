@@ -70,7 +70,9 @@
                     </figure>
                 @endisset
             </div>
+        </section>
 
+        <section class="section">
             <div class="container is-medium">
                 <div
                     class="entry-content content block"
