@@ -49,20 +49,18 @@
         </section>
 
         <section class="section">
-            <div class="container">
-                @isset($entry->cover, $entry->cover->url)
+            @isset($entry->cover, $entry->cover->url)
+                <div class="container block">
                     <figure class="entry-cover image">
                         <img
                             src="{{ $entry->cover->url }}"
                             alt="{{ $entry->title }}"
                         />
                     </figure>
-                @endisset
-            </div>
-        </section>
+                </div>
+            @endisset
 
-        <section class="section">
-            <div class="container is-medium">
+            <div class="container is-medium block">
                 <div
                     class="entry-content content"
                     itemprop="articleBody"
