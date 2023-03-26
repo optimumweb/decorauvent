@@ -1,6 +1,6 @@
 @extends('layouts.default', [
     'meta' => [
-        'title' => $entryType,
+        'title' => $site->trans('common.advice'),
     ],
 ])
 
