@@ -50,7 +50,7 @@
 
         <section class="section">
             @isset($entry->cover, $entry->cover->url)
-                <div class="container block">
+                <div class="container mb-6">
                     <figure class="entry-cover image">
                         <img
                             src="{{ $entry->cover->url }}"
@@ -60,7 +60,7 @@
                 </div>
             @endisset
 
-            <div class="container is-medium block">
+            <div class="container is-medium">
                 <div
                     class="entry-content content"
                     itemprop="articleBody"
