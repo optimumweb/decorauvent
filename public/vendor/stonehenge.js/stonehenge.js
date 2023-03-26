@@ -1,13 +1,25 @@
 (function($) {
     $.fn.stonehenge = function (options) {
         options = $.extend({
-            speed: 1.0
+            speed: 1.0,
+            autoscroll: false,
+            autoscrollSpeed: 25,
+            autoscrollPeriod: 250,
+            autoscrollEasing: 'linear',
         }, options);
 
         return this.each(function () {
-            let $stonehenge = $(this),
-                speed = options.speed || $stonehenge.data('stonehenge-speed') || 1.0,
-                isGrabbed = false,
+            let $stonehenge = $(this);
+
+            // options
+            let speed = $stonehenge.data('stonehenge-speed') || options.speed,
+                autoscroll = $stonehenge.data('stonehenge-autoscroll') || options.autoscroll,
+                autoscrollSpeed = $stonehenge.data('stonehenge-autoscroll-speed') || options.autoscrollSpeed,
+                autoscrollPeriod = $stonehenge.data('stonehenge-autoscroll-period') || options.autoscrollPeriod,
+                autoscrollEasing = $stonehenge.data('stonehenge-autoscroll-easing') || options.autoscrollEasing;
+
+            // state
+            let isGrabbed = false,
                 initialX,
                 scrollLeft;
 
@@ -33,6 +45,18 @@
                     let walk = (x - initialX) * speed;
                     this.scrollLeft = scrollLeft - walk;
                 });
+
+            if (autoscroll) {
+                let autoscrollDelta = Math.round(autoscrollSpeed * autoscrollPeriod / 1000);
+
+                setInterval(function () {
+                    if (! isGrabbed) {
+                        $stonehenge.animate({
+                            scrollLeft: $stonehenge.scrollLeft() + autoscrollDelta
+                        }, autoscrollPeriod, autoscrollEasing);
+                    }
+                }, autoscrollPeriod);
+            }
         });
     };
 }(jQuery));
