@@ -7,7 +7,7 @@
 
 @section('content')
     <section
-        class="section is-primary is-large is-cover is-inverted"
+        class="section is-primary {{ isset($entry->cover) ? 'is-cover is-large' : '' }} is-inverted"
         style="{{ isset($entry->cover) ? "background-image: url({$entry->cover->url});" : '' }}"
     >
         <div class="overlay is-primary"></div>
