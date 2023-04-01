@@ -4,6 +4,7 @@ namespace Theme;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -13,13 +14,23 @@ class FreeEstimate extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $replyTo = [];
+
     public function __construct(
         public array $fields = [],
-    ) {}
+    ) {
+        foreach ($fields as $field) {
+            if (isset($field['value']) && filter_var($field['value'], FILTER_VALIDATE_EMAIL)) {
+                $this->replyTo[] = new Address($field['value']);
+                break;
+            }
+        }
+    }
 
     public function envelope(): Envelope
     {
         return new Envelope(
+            replyTo: $this->replyTo,
             subject: "Demande d'estimé sans frais",
         );
     }
