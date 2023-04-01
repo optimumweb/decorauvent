@@ -10,24 +10,6 @@
             <div class="level-right">
                 <div class="level-item">
                     <div class="field is-grouped">
-                        <div class="control">
-                            <a href="#residential">
-                                <span class="icon"><i class="fa-solid fa-square"></i></span>
-                                <span>Résidentiel</span>
-                            </a>
-                        </div>
-
-                        <div class="control">
-                            <a href="#commercial">
-                                <span class="icon"><i class="fa-solid fa-square"></i></span>
-                                <span>Commercial</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="level-item">
-                    <div class="field is-grouped">
                         @foreach ($site->locales()->get() as $locale)
                             <div class="control">
                                 <a
