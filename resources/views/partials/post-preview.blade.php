@@ -36,17 +36,6 @@
                     {{ $entry->published_at }}
                 </span>
             </div>
-
-            <div class="level-item">
-                <span class="icon"><i class="fas fa-user"></i></span>
-
-                <span
-                    class="entry-author"
-                    itemprop="author"
-                >
-                    {{ $entry->author }}
-                </span>
-            </div>
         </div>
     </div>
 
