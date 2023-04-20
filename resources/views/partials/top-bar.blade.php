@@ -5,6 +5,13 @@
                 <div class="level-item">
                     {!! $site->menu('top') !!}
                 </div>
+
+                @if ($businessPhone = $site->setting('business_phone'))
+                    <div class="level-item">
+                        <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                        <span>{{ $businessPhone }}</span>
+                    </div>
+                @endif
             </div>
 
             <div class="level-right">
