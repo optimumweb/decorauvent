@@ -24,14 +24,14 @@
     <section class="section">
         <div class="container">
             <div class="columns is-multiline">
-                @foreach ($entries->paginate() as $entry)
+                @foreach ($entries as $entry)
                     <div class="column is-4">
                         @include('partials.post-preview')
                     </div>
                 @endforeach
             </div>
 
-            {{ $entries->appends(request()->input())->links('partials.pagination') }}
+            {{ $query->links('partials.pagination') }}
         </div>
     </section>
 @endsection
