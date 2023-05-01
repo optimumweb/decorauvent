@@ -6,7 +6,7 @@
                     <div class="level-item">
                         @if ($logo = $site->setting('logo'))
                             <h1 id="site-logo">
-                                <a href="{{ $site->home() }}">
+                                <a href="{{ $site->path() }}">
                                     <img
                                         src="{{ Storage::url($logo) }}"
                                         width="300"
@@ -17,7 +17,7 @@
                         @else
                             <div id="site-title">
                                 <h1 id="site-name" class="title">
-                                    <a href="{{ $site->home() }}">
+                                    <a href="{{ $site->path() }}">
                                         {{ $site->name }}
                                     </a>
                                 </h1>
