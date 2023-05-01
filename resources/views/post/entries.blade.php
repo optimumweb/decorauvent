@@ -31,7 +31,7 @@
                 @endforeach
             </div>
 
-            {{ $entries->links('partials.pagination') }}
+            {{ $entries->paginate()->links('partials.pagination') }}
         </div>
     </section>
 @endsection
