@@ -30,6 +30,8 @@
                     </div>
                 @endforeach
             </div>
+
+            {{ $entries->links('partials.pagination') }}
         </div>
     </section>
 @endsection
