@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    @if ($home = $site->entries()->home()->first())
-        {!! $home->html !!}
+    @if ($homePage = $site->homePage())
+        {!! $homePage->html !!}
     @endif
 @endsection

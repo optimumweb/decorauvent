@@ -13,7 +13,7 @@
                 <div class="level-left">
                     @if ($logo = $site->setting('logo_inverted'))
                         <div class="level-item">
-                            <a href="{{ $site->home() }}">
+                            <a href="{{ $site->path() }}">
                                 <img
                                     src="{{ Storage::url($logo) }}"
                                     width="200"
