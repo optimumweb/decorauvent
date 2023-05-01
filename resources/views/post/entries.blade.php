@@ -31,6 +31,8 @@
                 @endforeach
             </div>
 
+            <hr />
+
             {{ $entries->paginate()->links('partials.pagination') }}
         </div>
     </section>
