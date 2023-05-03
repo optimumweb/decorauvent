@@ -17,7 +17,7 @@
             <div class="level-right">
                 <div class="level-item">
                     <div class="field is-grouped">
-                        @forelse ($translations as $translation)
+                        @forelse ($translations ?? [] as $translation)
                             @isset($translation->locale)
                                 <div class="control">
                                     <a
