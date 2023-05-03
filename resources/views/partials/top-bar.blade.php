@@ -17,17 +17,30 @@
             <div class="level-right">
                 <div class="level-item">
                     <div class="field is-grouped">
-                        @foreach ($site->locales()->get() as $locale)
-                            <div class="control">
-                                <a
-                                    href="{{ route('locale.home', ['locale' => $locale]) }}"
-                                    hreflang="{{ $locale->name }}"
-                                >
-                                    <span class="icon"><i class="fa-solid {{ $locale->is($site->locale) ? 'fa-square-check has-text-purple' : 'fa-square' }}"></i></span>
-                                    <span>{{ $locale->title }}</span>
-                                </a>
-                            </div>
-                        @endforeach
+                        @forelse ($translations as $translation)
+                            @isset($translation->locale)
+                                <div class="control">
+                                    <a
+                                        href="{{ $translation->url ?? $translation->locale->url }}"
+                                        hreflang="{{ $translation->locale->name }}"
+                                        title="{{ $translation }}"
+                                    >
+                                        {{ $translation->locale }}
+                                    </a>
+                                </div>
+                            @endif
+                        @empty
+                            @foreach ($site->alternateLocales()->get() as $locale)
+                                <div class="control">
+                                    <a
+                                        href="{{ $locale->url }}"
+                                        hreflang="{{ $locale->name }}"
+                                    >
+                                        {{ $locale }}
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endforelse
                     </div>
                 </div>
             </div>
