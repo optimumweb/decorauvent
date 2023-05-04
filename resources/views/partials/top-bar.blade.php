@@ -25,7 +25,8 @@
                                         hreflang="{{ $translation->locale->name }}"
                                         title="{{ $translation }}"
                                     >
-                                        {{ $translation->locale }}
+                                        <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                                        <span>{{ $translation->locale }}</span>
                                     </a>
                                 </div>
                             @endif
@@ -36,7 +37,8 @@
                                         href="{{ $locale->url }}"
                                         hreflang="{{ $locale->name }}"
                                     >
-                                        {{ $locale }}
+                                        <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                                        <span>{{ $locale }}</span>
                                     </a>
                                 </div>
                             @endforeach
