@@ -17,10 +17,9 @@
 
                 <div class="level-item">
                     <div class="field is-grouped">
-                        <!-- @php var_dump($translations ?? '???') @endphp -->
                         @forelse ($translations ?? [] as $translation)
                             @isset($translation->locale)
-                                <div class="control">
+                                <div class="control site-translation">
                                     <a
                                         href="{{ $translation->url ?? $translation->locale->url }}"
                                         hreflang="{{ $translation->locale->name }}"
@@ -33,7 +32,7 @@
                             @endif
                         @empty
                             @foreach ($site->alternateLocales()->get() as $locale)
-                                <div class="control">
+                                <div class="control site-alternate-locale">
                                     <a
                                         href="{{ $locale->url }}"
                                         hreflang="{{ $locale->name }}"
