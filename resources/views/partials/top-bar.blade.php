@@ -25,7 +25,7 @@
                                         hreflang="{{ $translation->locale->name }}"
                                         title="{{ $translation }}"
                                     >
-                                        <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                                        <span class="icon"><i class="fa-solid fa-comment"></i></span>
                                         <span>{{ $translation->locale }}</span>
                                     </a>
                                 </div>
@@ -37,7 +37,7 @@
                                         href="{{ $locale->url }}"
                                         hreflang="{{ $locale->name }}"
                                     >
-                                        <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                                        <span class="icon"><i class="fa-solid fa-comment"></i></span>
                                         <span>{{ $locale }}</span>
                                     </a>
                                 </div>
