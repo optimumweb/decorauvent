@@ -5,16 +5,16 @@
                 <div class="level-item">
                     {!! $site->menu('top') !!}
                 </div>
+            </div>
 
+            <div class="level-right">
                 @if ($businessPhone = $site->setting('business_phone'))
                     <div class="level-item">
                         <span class="icon"><i class="fa-solid fa-phone"></i></span>
                         <span>{{ $businessPhone }}</span>
                     </div>
                 @endif
-            </div>
 
-            <div class="level-right">
                 <div class="level-item">
                     <div class="field is-grouped">
                         @forelse ($translations ?? [] as $translation)
