@@ -17,6 +17,7 @@
 
                 <div class="level-item">
                     <div class="field is-grouped">
+                        <!-- @php var_dump($translations ?? '???') @endphp -->
                         @forelse ($translations ?? [] as $translation)
                             @isset($translation->locale)
                                 <div class="control">
