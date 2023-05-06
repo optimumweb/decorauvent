@@ -8,7 +8,7 @@
                             <h1 id="site-logo">
                                 <a href="{{ $site->path() }}">
                                     <img
-                                        src="{{ Storage::url($logo) }}"
+                                        src="{{ $logo }}"
                                         width="300"
                                         alt="{{ $site->name }} - {{ $site->description }}"
                                     />
