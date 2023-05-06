@@ -13,7 +13,7 @@
         @endforeach
 
         @if ($favicon = $site->theme->setting('favicon'))
-            <link rel="icon" href="{{ Storage::url($favicon) }}" />
+            <link rel="icon" href="{{ $favicon }}" />
         @endif
 
         <!-- Google Fonts -->

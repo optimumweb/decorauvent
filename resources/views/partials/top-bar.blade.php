@@ -8,7 +8,7 @@
             </div>
 
             <div class="level-right">
-                @if ($businessPhone = $site->setting('business_phone'))
+                @if ($businessPhone = $site->theme->setting('business_phone'))
                     <div class="level-item">
                         <span class="icon"><i class="fa-solid fa-phone"></i></span>
                         <span>{{ $businessPhone }}</span>

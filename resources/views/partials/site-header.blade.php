@@ -4,7 +4,7 @@
             <div class="level">
                 <div class="level-left">
                     <div class="level-item">
-                        @if ($logo = $site->setting('logo'))
+                        @if ($logo = $site->theme->setting('logo'))
                             <h1 id="site-logo">
                                 <a href="{{ $site->path() }}">
                                     <img
