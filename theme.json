@@ -1,93 +1,108 @@
 {
-  "name": "optimumweb/decorauvent",
-  "menuLocations": [
-    {
-      "name": "top",
-      "title": "Top Menu"
-    },
-    {
-      "name": "primary",
-      "title": "Primary Menu"
-    },
-    {
-      "name": "footer",
-      "title": "Footer Menu"
+    "name": "optimumweb/decorauvent",
+    "menuLocations": [
+        {
+            "name": "top",
+            "title": "Top Menu"
+        },
+        {
+            "name": "primary",
+            "title": "Primary Menu"
+        },
+        {
+            "name": "footer",
+            "title": "Footer Menu"
+        }
+    ],
+    "blockLocations": [
+        {
+            "name": "header_code",
+            "title": "Header Code",
+            "description": "Code that will be inserted at the end of the <head> section.",
+            "defaultEditorMode": "code"
+        },
+        {
+            "name": "footer_code",
+            "title": "Footer Code",
+            "description": "Code that will be inserted at the end of the <body> section.",
+            "defaultEditorMode": "code"
+        },
+        {
+            "name": "footer_suppliers",
+            "title": "Footer Suppliers",
+            "description": "Logos of suppliers in the footer.",
+            "defaultEditorMode": "code"
+        },
+        {
+            "name": "footer_cta",
+            "title": "Footer CTA",
+            "description": "Call-to-action (CTA) in the footer.",
+            "defaultEditorMode": "code"
+        },
+        {
+            "name": "footer_sub",
+            "title": "Subfooter",
+            "description": "Very bottom of the footer.",
+            "defaultEditorMode": "code"
+        }
+    ],
+    "settings": [
+        {
+            "name": "logo",
+            "title": "Logo",
+            "help": "Upload your site's logo file",
+            "type": "file"
+        },
+        {
+            "name": "logo_inverted",
+            "title": "Inverted Logo",
+            "help": "Upload your site's logo file to be displayed on dark background",
+            "type": "file"
+        },
+        {
+            "name": "favicon",
+            "title": "Favicon",
+            "help": "Upload your site's favicon file",
+            "type": "file"
+        },
+        {
+            "name": "business_address",
+            "title": "Business address",
+            "type": "textarea"
+        },
+        {
+            "name": "business_phone",
+            "title": "Business phone number",
+            "type": "tel"
+        },
+        {
+            "name": "business_tollfree",
+            "title": "Business toll-free",
+            "type": "tel"
+        },
+        {
+            "name": "business_email",
+            "title": "Business email address",
+            "type": "email"
+        },
+        {
+            "name": "free_estimate_notify",
+            "title": "Send Free Estimate Requests to",
+            "type": "email"
+        },
+        {
+            "name": "pipedrive_api_token",
+            "title": "Pipedrive API Token",
+            "type": "text"
+        },
+        {
+            "name": "pipedrive_postal_address_field_token",
+            "title": "Pipedrive Postal Address Field Token",
+            "type": "text"
+        }
+    ],
+    "config": {
+        "fontawesome": "82f2b5865f"
     }
-  ],
-  "blockLocations": [
-    {
-      "name": "header_code",
-      "title": "Header Code",
-      "description": "Code that will be inserted at the end of the <head> section.",
-      "defaultEditorMode": "code"
-    },
-    {
-      "name": "footer_code",
-      "title": "Footer Code",
-      "description": "Code that will be inserted at the end of the <body> section.",
-      "defaultEditorMode": "code"
-    },
-    {
-      "name": "footer_suppliers",
-      "title": "Footer Suppliers",
-      "description": "Logos of suppliers in the footer.",
-      "defaultEditorMode": "code"
-    },
-    {
-      "name": "footer_cta",
-      "title": "Footer CTA",
-      "description": "Call-to-action (CTA) in the footer.",
-      "defaultEditorMode": "code"
-    },
-    {
-      "name": "footer_sub",
-      "title": "Subfooter",
-      "description": "Very bottom of the footer.",
-      "defaultEditorMode": "code"
-    }
-  ],
-  "settings": [
-    {
-      "name": "logo",
-      "title": "Logo",
-      "help": "Upload your site's logo file",
-      "type": "file"
-    },
-    {
-      "name": "logo_inverted",
-      "title": "Inverted Logo",
-      "help": "Upload your site's logo file to be displayed on dark background",
-      "type": "file"
-    },
-    {
-      "name": "favicon",
-      "title": "Favicon",
-      "help": "Upload your site's favicon file",
-      "type": "file"
-    },
-    {
-      "name": "business_address",
-      "title": "Business address",
-      "type": "textarea"
-    },
-    {
-      "name": "business_phone",
-      "title": "Business phone number",
-      "type": "tel"
-    },
-    {
-      "name": "business_tollfree",
-      "title": "Business toll-free",
-      "type": "tel"
-    },
-    {
-      "name": "business_email",
-      "title": "Business email address",
-      "type": "email"
-    }
-  ],
-  "config": {
-    "fontawesome": "82f2b5865f"
-  }
 }
 

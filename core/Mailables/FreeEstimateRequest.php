@@ -1,6 +1,6 @@
 <?php
 
-namespace Theme;
+namespace Theme\Mailables;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class FreeEstimate extends Mailable
+class FreeEstimateRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
