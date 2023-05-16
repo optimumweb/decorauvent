@@ -8,7 +8,10 @@
         for="menu-{{ $menu->location }}-toggle"
     >
         <span class="icon"><i class="fa-solid fa-bars"></i></span>
-        <span>{{ site()->trans('common.menu') }}</span>
+
+        @isset($label)
+            <span>{!! $label !!}</span>
+        @endisset
     </label>
 
     <input

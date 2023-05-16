@@ -3,5 +3,12 @@
 return [
     'advice' => "Conseils",
     'readMore' => "Lire la suite",
-    'menu' => "Menu",
+    'menu' => [
+        'top' => [
+            'label' => "Menu",
+        ],
+        'primary' => [
+            'label' => "Produits",
+        ],
+    ],
 ];

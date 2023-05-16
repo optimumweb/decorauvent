@@ -2,7 +2,10 @@
     <div class="container">
         <div class="columns is-mobile is-vcentered">
             <div class="column">
-                {!! $site->menu('top')->render(['class' => 'is-primary']) !!}
+                {!! $site->menu('top')->render([
+                    'class' => 'is-primary',
+                    'label' => $site->trans('common.menu.top.label'),
+                ]) !!}
             </div>
 
             <div class="column is-narrow">

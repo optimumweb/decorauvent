@@ -29,7 +29,10 @@
                 </div>
 
                 <div class="column is-narrow">
-                    {!! $site->menu('primary')->render(['class' => 'is-centered']) !!}
+                    {!! $site->menu('primary')->render([
+                        'class' => 'is-centered',
+                        'label' => $site->trans('common.menu.primary.label'),
+                    ]) !!}
                 </div>
             </div>
         </div>
