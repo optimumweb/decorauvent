@@ -1,39 +1,35 @@
 <header id="site-header" class="hero">
     <div class="hero-body">
         <div class="container">
-            <div class="level">
-                <div class="level-left">
-                    <div class="level-item">
-                        @if ($logo = $site->theme->setting('logo'))
-                            <h1 id="site-logo">
+            <div class="columns is-mobile is-vcentered">
+                <div class="column">
+                    @if ($logo = $site->theme->setting('logo'))
+                        <h1 id="site-logo">
+                            <a href="{{ $site->path() }}">
+                                <img
+                                    src="{{ $logo }}"
+                                    width="300"
+                                    alt="{{ $site->name }} - {{ $site->description }}"
+                                />
+                            </a>
+                        </h1>
+                    @else
+                        <div id="site-title">
+                            <h1 id="site-name" class="title">
                                 <a href="{{ $site->path() }}">
-                                    <img
-                                        src="{{ $logo }}"
-                                        width="300"
-                                        alt="{{ $site->name }} - {{ $site->description }}"
-                                    />
+                                    {{ $site->name }}
                                 </a>
                             </h1>
-                        @else
-                            <div id="site-title">
-                                <h1 id="site-name" class="title">
-                                    <a href="{{ $site->path() }}">
-                                        {{ $site->name }}
-                                    </a>
-                                </h1>
 
-                                <h2 id="site-description">
-                                    {{ $site->description }}
-                                </h2>
-                            </div>
-                        @endif
-                    </div>
+                            <h2 id="site-description">
+                                {{ $site->description }}
+                            </h2>
+                        </div>
+                    @endif
                 </div>
 
-                <div class="level-right">
-                    <div class="level-item">
-                        {!! $site->menu('primary') !!}
-                    </div>
+                <div class="column is-narrow">
+                    {!! $site->menu('primary')->render(['class' => 'is-centered']) !!}
                 </div>
             </div>
         </div>

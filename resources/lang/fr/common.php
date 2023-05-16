@@ -3,4 +3,5 @@
 return [
     'advice' => "Conseils",
     'readMore' => "Lire la suite",
+    'menu' => "Menu",
 ];

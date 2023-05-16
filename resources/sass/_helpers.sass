@@ -33,10 +33,14 @@ p
         display: block
         padding: 0.5em 1em
 
+    ul
+        border-radius: $radius-small
+
     > ul
+        display: none
+
         > li
             position: relative
-            display: inline-block
 
             &:last-child
                 margin-right: 0
@@ -45,20 +49,55 @@ p
                 display: none
                 position: absolute
                 top: 100%
-                left: 0
+                width: 100%
+                min-width: 300px
                 padding: 1rem
-                background-color: $primary
-                color: $white
-                border-radius: $radius-small
+                background-color: $white
                 text-align: left
                 z-index: 1
 
-                > li
-                    > a
-                        color: $white
 
             &:hover > ul
                 display: block
+
+    .menu-toggle-checkbox:checked
+        + ul
+            display: block
+
+    &.is-primary
+        ul
+            background-color: $primary
+
+            a
+                color: $white
+
+    +mobile
+        > ul
+            display: none
+            position: absolute
+            top: 100%
+            left: 0
+            right: 0
+            z-index: 100
+            background-color: $white
+            padding: 2rem
+
+        &.is-right li
+            text-align: right
+
+        &.is-centered li
+            text-align: center
+
+    +tablet
+        .menu-toggle
+            display: none
+
+        > ul
+            display: block
+
+            > li
+                display: inline-block
+
 
 .section,
 .box
