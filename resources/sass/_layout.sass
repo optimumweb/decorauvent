@@ -1,2 +1,24 @@
+#site-header
+    position: fixed
+    top: 0
+    width: 100%
+    z-index: 10
+    background-color: $white
+
+    #site-header-main,
+    #site-logo img
+        transition: 0.5s all ease
+
+body.is-scrolled
+    #site-header
+        box-shadow: $box-shadow
+
+        #site-header-main
+            padding-top: 1rem
+            padding-bottom: 1rem
+
+        #site-logo img
+            max-width: 180px
+
 #menu-primary
     font-size: $size-4

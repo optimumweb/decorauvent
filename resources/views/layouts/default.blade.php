@@ -61,8 +61,6 @@
         <!-- /Header Code -->
     </head>
     <body>
-        @include('partials.top-bar')
-
         @include('partials.site-header')
 
         <main id="site-content">
