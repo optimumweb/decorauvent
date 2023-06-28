@@ -16,6 +16,14 @@
             <link rel="canonical" href="{{ $meta['canonical'] }}" />
         @endisset
 
+        @isset($translations)
+            @foreach ($translations as $translation)
+                @isset($translation->url)
+                    <link rel="alternate" hreflang="{{ $translation->locale->name }}" href="{{ $translation->url }}" />
+                @endisset
+            @endforeach
+        @endisset
+
         @if ($favicon = $site->theme->setting('favicon'))
             <link rel="icon" href="{{ $favicon }}" />
         @endif
