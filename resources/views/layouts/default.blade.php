@@ -12,6 +12,10 @@
             @endisset
         @endforeach
 
+        @isset($meta['canonical'])
+            <link rel="canonical" href="{{ $meta['canonical'] }}" />
+        @endisset
+
         @if ($favicon = $site->theme->setting('favicon'))
             <link rel="icon" href="{{ $favicon }}" />
         @endif

@@ -2,6 +2,7 @@
     'meta' => [
         'title' => $taxonomy->title,
         'description' => $taxonomy->description,
+        'canonical' => $taxonomy->url,
     ],
 ])
 

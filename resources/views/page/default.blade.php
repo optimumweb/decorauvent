@@ -2,6 +2,7 @@
     'meta' => [
         'title' => $entry->title,
         'description' => $entry->summary,
+        'canonical' => $entry->url,
     ],
 ])
 
