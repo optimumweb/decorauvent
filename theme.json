@@ -91,6 +91,11 @@
             "type": "email"
         },
         {
+            "name": "free_estimate_cc",
+            "title": "CC Free Estimate Requests to",
+            "type": "email"
+        },
+        {
             "name": "pipedrive_api_token",
             "title": "Pipedrive API Token",
             "type": "text"

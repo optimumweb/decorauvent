@@ -15,8 +15,10 @@ if (isset($requestData['free_estimate'])) {
 
         if (isset($freeEstimateNotify)) {
             $freeEstimateNotify = array_map('trim', explode(',', $freeEstimateNotify));
+            $freeEstimateCc = array_map('trim', explode(',', $site->theme->setting('free_estimate_cc')));
 
             \Illuminate\Support\Facades\Mail::to($freeEstimateNotify)
+                ->cc($freeEstimateCc)
                 ->send(new \Theme\Mailables\FreeEstimateRequest($freeEstimateData));
         }
     } catch (\Exception $e) {
