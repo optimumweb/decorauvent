@@ -16,6 +16,18 @@
             <link rel="icon" href="{{ $favicon }}" />
         @endif
 
+        @if ($googleAnalyticsId = $site->theme->setting('google_analytics_id'))
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ $googleAnalyticsId }}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '{{ $googleAnalyticsId }}');
+            </script>
+        @endif
+
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

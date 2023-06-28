@@ -104,6 +104,11 @@
             "name": "pipedrive_postal_address_field_token",
             "title": "Pipedrive Postal Address Field Token",
             "type": "text"
+        },
+        {
+            "name": "google_analytics_id",
+            "title": "Google Analytics ID",
+            "type": "text"
         }
     ],
     "config": {
