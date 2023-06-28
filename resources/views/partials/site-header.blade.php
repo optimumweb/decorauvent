@@ -22,6 +22,7 @@
                             @isset($translation->locale)
                                 <div class="control site-translation">
                                     <a
+                                        rel="alternate"
                                         href="{{ $translation->url ?? $translation->locale->url }}"
                                         hreflang="{{ $translation->locale->name }}"
                                         title="{{ $translation }}"
@@ -35,6 +36,7 @@
                             @foreach ($site->alternateLocales()->get() as $locale)
                                 <div class="control site-alternate-locale">
                                     <a
+                                        rel="alternate"
                                         href="{{ $locale->url }}"
                                         hreflang="{{ $locale->name }}"
                                     >
