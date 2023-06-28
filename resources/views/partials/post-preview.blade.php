@@ -10,6 +10,7 @@
                 <img
                     src="{{ $entry->cover->url }}"
                     alt="{{ $entry->title }}"
+                    loading="lazy"
                 />
             </a>
         </figure>
