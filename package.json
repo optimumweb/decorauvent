@@ -24,6 +24,6 @@
         "aos": "^2.3.4",
         "bulma": "^0.9.4",
         "jquery": "^3.6.4",
-        "stonehenge.js": "^0.0.14"
+        "stonehenge.js": "^0.0.15"
     }
 }
