@@ -1,6 +1,7 @@
 $(document).ready(function () {
     AOS.init({
-        duration: 800
+        duration: 800,
+        disable: 'mobile',
     });
 
     const $window = $(window);
