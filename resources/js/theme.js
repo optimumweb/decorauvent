@@ -1,15 +1,10 @@
-const $window = $(window);
-const $document = $(document);
-
-$document.ready(function () {
+$(document).ready(function () {
     AOS.init({
         duration: 800
     });
 
-    let $body = $('body'),
-        $siteHeader = $('#site-header');
-
-    $body.css('padding-top', $siteHeader.outerHeight(true));
+    const $window = $(window);
+    const $body = $('body');
 
     $window.on('scroll', () => {
         if ($window.scrollTop() > 100) {
