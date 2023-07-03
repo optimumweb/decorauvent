@@ -109,6 +109,16 @@
             "name": "google_analytics_id",
             "title": "Google Analytics ID",
             "type": "text"
+        },
+        {
+            "name": "matomo_endpoint",
+            "title": "Matomo Endpoint",
+            "type": "text"
+        },
+        {
+            "name": "matomo_site_id",
+            "title": "Matomo Site ID",
+            "type": "text"
         }
     ],
     "config": {
