@@ -11,11 +11,11 @@
         <div class="container">
             <div class="level">
                 <div class="level-left">
-                    @if ($logo = $site->theme->setting('logo_inverted'))
+                    @if ($logoInverted = $site->theme->setting('logo_inverted'))
                         <div class="level-item">
                             <a href="{{ $site->path() }}">
                                 <img
-                                    src="{{ $logo }}"
+                                    src="{{ storageUrl($logoInverted) }}"
                                     width="200"
                                     alt="{{ $site->name }} - {{ $site->description }}"
                                 />

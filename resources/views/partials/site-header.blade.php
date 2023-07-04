@@ -60,7 +60,7 @@
                         <h1 id="site-logo">
                             <a href="{{ $site->path() }}">
                                 <img
-                                    src="{{ $logo }}"
+                                    src="{{ storageUrl($logo) }}"
                                     width="300"
                                     alt="{{ $site->name }} - {{ $site->description }}"
                                 />
