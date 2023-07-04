@@ -25,7 +25,7 @@
         @endisset
 
         @if ($favicon = $site->theme->setting('favicon'))
-            <link rel="icon" href="{{ $favicon }}" />
+            <link rel="icon" href="{{ storageUrl($favicon) }}" />
         @endif
 
         @if ($googleAnalyticsId = $site->theme->setting('google_analytics_id'))
