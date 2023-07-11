@@ -91,14 +91,12 @@ if (isset($requestData['free_estimate'])) {
 
                     if (isset($freeEstimateData['files']['value'])) {
                         foreach ($freeEstimateData['files']['value'] as $file) {
-                            if ($fileContents = file_get_contents($file)) {
-                                $pipedriveFile = [
-                                    'file' => $fileContents,
-                                    'dealId' => $pipedriveDealId,
-                                ];
+                            $pipedriveFile = [
+                                'file' => $file,
+                                'dealId' => $pipedriveDealId,
+                            ];
 
-                                $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
-                            }
+                            $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
                         }
                     }
                 } else {
