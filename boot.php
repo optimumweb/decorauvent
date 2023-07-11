@@ -91,18 +91,14 @@ if (isset($requestData['free_estimate'])) {
 
                     if (isset($freeEstimateData['files'])) {
                         foreach ($freeEstimateData['files'] as $file) {
-                            $filePath = $file->getRealPath();
-                            $fileDir = dirname($filePath);
-                            $fileName = basename($filePath);
-                            $fileOriginalName = $file->getClientOriginalName();
-                            $newFilePath = "{$fileDir}/{$fileOriginalName}";
+                            if ($fileContents = file_get_contents($file)) {
+                                $pipedriveFile = [
+                                    'file' => $fileContents,
+                                    'dealId' => $pipedriveDealId,
+                                ];
 
-                            $pipedriveFile = [
-                                'file' => copy($filePath, $newFilePath) ? $newFilePath : $filePath,
-                                'dealId' => $pipedriveDealId,
-                            ];
-
-                            $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
+                                $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
+                            }
                         }
                     }
                 } else {
