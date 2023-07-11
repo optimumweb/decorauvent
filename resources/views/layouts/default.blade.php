@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ $site->locale->name }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <title>{{ $meta['title'] ?? $site->description }} - {{ $site->name }}</title>
 
@@ -112,6 +113,8 @@
         </main>
 
         @include('partials.site-footer')
+
+        @include('partials.loading')
 
         <!-- Footer Code -->
         {!! $site->blocks('footer_code')->get()->render() !!}

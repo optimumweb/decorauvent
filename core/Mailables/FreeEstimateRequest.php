@@ -3,6 +3,7 @@
 namespace Theme\Mailables;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Attachment;
@@ -51,9 +52,11 @@ class FreeEstimateRequest extends Mailable
 
         if (isset($this->fields['files'])) {
             foreach ($this->fields['files'] as $file) {
-                if ($file->isValid()) {
-                    $attachments[] = Attachment::fromPath($file->getRealPath())
-                        ->as($file->getClientOriginalName());
+                if ($file instanceof UploadedFile) {
+                    if ($file->isValid()) {
+                        $attachments[] = Attachment::fromPath($file->getRealPath())
+                            ->as($file->getClientOriginalName());
+                    }
                 }
             }
         }

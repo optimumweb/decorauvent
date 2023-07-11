@@ -20,6 +20,8 @@ if (isset($requestData['free_estimate'])) {
             \Illuminate\Support\Facades\Mail::to($freeEstimateNotify)
                 ->cc($freeEstimateCc)
                 ->send(new \Theme\Mailables\FreeEstimateRequest($freeEstimateData));
+        } else {
+            throw new \Exception("Setting 'free_estimate_notify' not defined");
         }
     } catch (\Exception $e) {
         \Sentry\captureException($e);
@@ -109,6 +111,8 @@ if (isset($requestData['free_estimate'])) {
             } else {
                 throw new \Exception("Could not create Pipedrive Person");
             }
+        } else {
+            throw new \Exception("Setting 'pipedrive_api_token' not defined");
         }
     } catch (\Exception $e) {
         \Sentry\captureException($e);
