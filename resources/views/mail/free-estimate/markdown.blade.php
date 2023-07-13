@@ -2,17 +2,17 @@
 <h1>Demande d'estimé sans frais</h1>
 
 <table width="100%">
-@foreach ($fields as $key => $field)
+@foreach ($fields as $field)
+@isset($field['label'])
 <tr>
 <td width="30%">
-{{ $field['label'] ?? $key }}
+{{ $field['label'] }}
 </td>
 <td>
-@isset($field['value'])
-{!! nl2br(is_array($field['value']) ? implode(PHP_EOL, $field['value']) : $field['value']) !!}
-@endisset
+{!! $field['value'] ?? '' !!}
 </td>
 </tr>
+@endisset
 @endforeach
 </table>
 </x-mail::message>
