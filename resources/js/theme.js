@@ -31,27 +31,30 @@ $(document)
 
             $fileInput.removeAttr('name');
 
-            $fileInput.on('change', function (e) {
-                let formData = new FormData(),
-                    fileInput = $fileInput[0],
-                    files = fileInput.files;
+            $fileInput.on('change', async function (e) {
+                let fileInput = $fileInput[0],
+                    fileList = fileInput.files,
+                    files = [];
 
-                if (files.length > 0) {
-                    for (let i = 0; i < files.length; i++) {
-                        formData.append('files[]', files[i]);
+                if (fileList.length > 0) {
+                    $loading.addClass('is-active');
+
+                    for (let i = 0; i < fileList.length; i++) {
+                        files.push({
+                            name: fileList[i].name,
+                            base64: await base64Encode(fileList[i])
+                        });
                     }
 
-                    $loading.addClass('is-active');
+                    console.log(files);
 
                     $.ajax({
                         type: 'POST',
                         url: uploadPath,
-                        data: formData,
+                        data: {files: files},
                         headers: {
                             'X-CSRF-TOKEN': CSRF_TOKEN,
                         },
-                        contentType: false,
-                        processData: false,
                     }).done(function (response) {
                         if (response.length > 0) {
                             response.forEach((file) => {
@@ -105,3 +108,10 @@ $(document)
                 }
             });
     });
+
+const base64Encode = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+});
