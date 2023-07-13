@@ -50,9 +50,8 @@ $(document)
                         headers: {
                             'X-CSRF-TOKEN': CSRF_TOKEN,
                         },
-                        cache: false,
                         contentType: false,
-                        processData: false,
+                        //processData: false,
                     }).done(function (response) {
                         if (response.length > 0) {
                             response.forEach((file) => {
@@ -63,6 +62,8 @@ $(document)
                                     $fileName.append($tag);
                                 }
                             });
+                        } else {
+                            window.alert("Une erreur est survenue / An error occurred");
                         }
 
                         $fileInput.val('');
