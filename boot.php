@@ -11,7 +11,7 @@ $requestData = $request->all();
 if (isset($requestData['google_recaptcha_token'])) {
     try {
         $googleRecaptchaAssessment = assessGoogleRecaptcha($requestData['google_recaptcha_token']);
-    } catch (\Exception $e) {
+    } catch (\Throwable $e) {
         \Sentry\captureException($e);
     }
 }
@@ -33,7 +33,7 @@ if (isset($requestData['free_estimate'])) {
             } else {
                 throw new \Exception("Setting 'free_estimate_notify' not defined");
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             \Sentry\captureException($e);
         }
 
@@ -112,7 +112,7 @@ if (isset($requestData['free_estimate'])) {
                                             ];
 
                                             $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
-                                        } catch (\Exception $e) {
+                                        } catch (\Throwable $e) {
                                             \Sentry\captureException($e);
                                         }
                                     } else {
@@ -130,7 +130,7 @@ if (isset($requestData['free_estimate'])) {
             } else {
                 throw new \Exception("Setting 'pipedrive_api_token' not defined");
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             \Sentry\captureException($e);
         }
     }
