@@ -1,5 +1,8 @@
 $(document)
     .ready(function () {
+        const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        const GOOGLE_RECAPTCHA_SITE_KEY = $('meta[name="google-recaptcha-site-key"]').attr('content');
+
         const $window = $(window);
         const $body = $('body');
         const $loading = $('#loading');
@@ -45,7 +48,7 @@ $(document)
                         url: uploadPath,
                         data: formData,
                         headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            'X-CSRF-TOKEN': CSRF_TOKEN,
                         },
                         cache: false,
                         contentType: false,
@@ -63,37 +66,41 @@ $(document)
                         }
 
                         $fileInput.val('');
+                    }).fail(function () {
+                        window.alert("Une erreur est survenue / An error occurred");
                     }).always(function () {
                         $loading.removeClass('is-active');
                     });
                 }
             });
         });
-    })
-    .on('click', '.tag .delete', function (e) {
-        e.preventDefault();
-        $(this).parents('.tag').remove();
-    })
-    .on('submit', 'form.recaptcha', function (e) {
-        let $form = $(this),
-            token = $form.data('google-recaptcha-token');
 
-        if (! token) {
-            e.preventDefault();
+        $(document)
+            .on('click', '.tag .delete', function (e) {
+                e.preventDefault();
+                $(this).parents('.tag').remove();
+            })
+            .on('submit', 'form.recaptcha', function (e) {
+                let $form = $(this),
+                    token = $form.data('google-recaptcha-token');
 
-            const GOOGLE_RECAPTCHA_SITE_KEY = $('meta[name="google-recaptcha-site-key"]').attr('content');
+                if (! token) {
+                    if (GOOGLE_RECAPTCHA_SITE_KEY) {
+                        e.preventDefault();
 
-            if (GOOGLE_RECAPTCHA_SITE_KEY) {
-                grecaptcha.enterprise.ready(async () => {
-                    token = await grecaptcha.enterprise.execute(GOOGLE_RECAPTCHA_SITE_KEY, {action: 'LOGIN'});
+                        $loading.addClass('is-active');
 
-                    console.log(token);
+                        grecaptcha.enterprise.ready(async () => {
+                            token = await grecaptcha.enterprise.execute(GOOGLE_RECAPTCHA_SITE_KEY, {action: 'LOGIN'});
 
-                    $form
-                        .data('google-recaptcha-token', token)
-                        .append(`<input type="hidden" name="google_recaptcha_token" value="${token}" />`)
-                        .submit();
-                });
-            }
-        }
+                            $loading.removeClass('is-active');
+
+                            $form
+                                .data('google-recaptcha-token', token)
+                                .append(`<input type="hidden" name="google_recaptcha_token" value="${token}" />`)
+                                .submit();
+                        });
+                    }
+                }
+            });
     });
