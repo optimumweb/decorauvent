@@ -1,5 +1,5 @@
 <x-mail::message>
-<h1>{{ site()->trans('mail.freeEstimateRequest.subject', ['identifier' => $identifier]) }}</h1>
+<h1>{{ site()->trans('mail.freeEstimateRequest.title') }}</h1>
 
 <table width="100%">
 @foreach ($fields as $field)

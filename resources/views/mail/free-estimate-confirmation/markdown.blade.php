@@ -1,5 +1,5 @@
 <x-mail::message>
-<h1>{{ site()->trans('mail.freeEstimateConfirmation.subject') }}</h1>
+<h1>{{ site()->trans('mail.freeEstimateConfirmation.title') }}</h1>
 
 <p>{{ site()->trans('mail.freeEstimateConfirmation.intro') }}</p>
 <p>{{ site()->trans('mail.freeEstimateConfirmation.photos') }}</p>
