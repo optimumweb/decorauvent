@@ -21,9 +21,10 @@ class FreeEstimateRequest extends Mailable
         public array $fields = [],
     ) {
         foreach ($fields as $field) {
-            if (isset($field['value']) && filter_var($field['value'], FILTER_VALIDATE_EMAIL)) {
-                $this->replyTo[] = new Address($field['value']);
-                break;
+            if (isset($field['value'])) {
+                if (filter_var($field['value'], FILTER_VALIDATE_EMAIL)) {
+                    $this->replyTo[] = new Address($field['value']);
+                }
             }
         }
     }
@@ -52,11 +53,20 @@ class FreeEstimateRequest extends Mailable
 
         if (isset($this->fields['files'])) {
             foreach ($this->fields['files'] as $file) {
-                if ($file instanceof UploadedFile) {
-                    if ($file->isValid()) {
-                        $attachments[] = Attachment::fromPath($file->getRealPath())
-                            ->as($file->getClientOriginalName());
+                try {
+                    if ($file instanceof UploadedFile) {
+                        if ($file->isValid()) {
+                            $attachments[] = Attachment::fromPath($file->getRealPath())
+                                ->as($file->getClientOriginalName());
+                        }
+                    } elseif (is_array($file) && isset($file['name'], $file['content'])) {
+                        if ($filepath = mkfile($file['content'])) {
+                            $attachments[] = Attachment::fromPath($filepath)
+                                ->as($file['name']);
+                        }
                     }
+                } catch (\Exception $e) {
+                    \Sentry\captureException($e);
                 }
             }
         }

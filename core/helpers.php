@@ -55,3 +55,17 @@ function assessGoogleRecaptcha(string $token, string $projectId = null, string $
 
     return false;
 }
+
+function mkfile(string $base64)
+{
+    if (str_contains($base64, ';base64,')) {
+        $data = explode(';base64,', $base64, 2);
+        $base64 = $data[1];
+    }
+    $content = base64_decode($base64);
+    $filename = tempnam(sys_get_temp_dir(), 'mkfile_');
+    if (file_put_contents($filename, $content) === false) {
+        throw new \Exception("Cannot write to file: {$filename}");
+    }
+    return $filename;
+}

@@ -1,31 +1,32 @@
 {
-  "name": "optimumweb/decorauvent",
-  "type": "library",
-  "description": "Mason CMS theme for Décor Au Vent",
-  "keywords": ["framework", "laravel", "cms", "mason", "theme", "decorauvent"],
-  "authors": [
-    {
-      "name": "Jonathan Roy",
-      "email": "jroy@optimumweb.ca",
-      "role": "developer"
-    }
-  ],
-  "license": "proprietary",
-  "require": {
-    "php": "^8.0",
-    "pipedrive/pipedrive": "^4.0",
-    "google/cloud-recaptcha-enterprise": "^1.4"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.5.10"
-  },
-  "autoload": {
-    "psr-4": {
-        "Theme\\": "core/"
-    }
-  },
-  "autoload-dev": {},
-  "scripts": {},
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "name": "optimumweb/decorauvent",
+    "type": "library",
+    "description": "Mason CMS theme for Décor Au Vent",
+    "keywords": ["framework", "laravel", "cms", "mason", "theme", "decorauvent"],
+    "authors": [
+        {
+            "name": "Jonathan Roy",
+            "email": "jroy@optimumweb.ca",
+            "role": "developer"
+        }
+    ],
+    "license": "proprietary",
+    "require": {
+        "php": "^8.0",
+        "ext-curl": "*",
+        "pipedrive/pipedrive": "^4.0",
+        "google/cloud-recaptcha-enterprise": "^1.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Theme\\": "core/"
+        }
+    },
+    "autoload-dev": {},
+    "scripts": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

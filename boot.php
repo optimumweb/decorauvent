@@ -99,14 +99,26 @@ if (isset($requestData['free_estimate'])) {
                             }
                         }
 
-                        if (isset($freeEstimateData['files']['value'])) {
-                            foreach ($freeEstimateData['files']['value'] as $file) {
-                                $pipedriveFile = [
-                                    'file' => $file,
-                                    'dealId' => $pipedriveDealId,
-                                ];
+                        if (isset($freeEstimateData['files'])) {
+                            if (function_exists('curl_file_create')) {
+                                foreach ($freeEstimateData['files'] as $file) {
+                                    if (isset($file['name'], $file['content'])) {
+                                        try {
+                                            $filepath = mkfile($file['content']);
 
-                                $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
+                                            $pipedriveFile = [
+                                                'file' => curl_file_create($filepath, null, $file['name']),
+                                                'dealId' => $pipedriveDealId,
+                                            ];
+
+                                            $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
+                                        } catch (\Exception $e) {
+                                            \Sentry\captureException($e);
+                                        }
+                                    } else {
+                                        \Sentry\captureMessage("Invalid file for Pipedrive: " . print_r($file, true));
+                                    }
+                                }
                             }
                         }
                     } else {
