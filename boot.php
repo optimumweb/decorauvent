@@ -107,7 +107,7 @@ if (isset($requestData['free_estimate'])) {
                                             $filepath = mkfile($file['content']);
 
                                             $pipedriveFile = [
-                                                'file' => curl_file_create($filepath, null, $file['name']),
+                                                'file' => $filepath,
                                                 'dealId' => $pipedriveDealId,
                                             ];
 
