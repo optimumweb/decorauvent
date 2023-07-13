@@ -15,6 +15,7 @@ class FreeEstimateRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $identifier;
     public $replyTo = [];
 
     public function __construct(
@@ -22,6 +23,8 @@ class FreeEstimateRequest extends Mailable
     ) {
         foreach ($fields as $field) {
             if (isset($field['value'])) {
+                $this->identifier ??= $field['value'];
+
                 if (filter_var($field['value'], FILTER_VALIDATE_EMAIL)) {
                     $this->replyTo[] = new Address($field['value']);
                 }
@@ -33,7 +36,7 @@ class FreeEstimateRequest extends Mailable
     {
         return new Envelope(
             replyTo: $this->replyTo,
-            subject: "Demande d'estimé sans frais",
+            subject: site()->trans('mail.freeEstimateRequest.subject', ['identifier' => $this->identifier]),
         );
     }
 

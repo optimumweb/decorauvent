@@ -39,6 +39,15 @@ if (isset($requestData['free_estimate'])) {
             }
 
             try {
+                if (isset($freeEstimateData['email']['value'])) {
+                    \Illuminate\Support\Facades\Mail::to($freeEstimateData['email']['value'])
+                        ->send(new \Theme\Mailables\FreeEstimateConfirmation($freeEstimateData));
+                }
+            } catch (\Throwable $e) {
+                \Sentry\captureException($e);
+            }
+
+            try {
                 $pipedriveApiToken = $site->theme()->setting('pipedrive_api_token');
                 $pipedrivePostalAddressFieldToken = $site->theme()->setting('pipedrive_postal_address_field_token');
 
