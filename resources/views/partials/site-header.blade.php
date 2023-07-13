@@ -11,7 +11,7 @@
 
                 <div class="column is-narrow">
                     <div class="field is-grouped">
-                        @if ($businessPhone = $site->theme->setting('business_phone'))
+                        @if ($businessPhone = $site->theme()->setting('business_phone'))
                             <div class="control">
                                 <span class="icon"><i class="fa-solid fa-phone"></i></span>
                                 <span>{{ $businessPhone }}</span>
@@ -56,7 +56,7 @@
         <div class="container">
             <div class="columns is-mobile is-vcentered">
                 <div class="column">
-                    @if ($logo = $site->theme->setting('logo'))
+                    @if ($logo = $site->theme()->setting('logo'))
                         <h1 id="site-logo">
                             <a href="{{ $site->path() }}">
                                 <img

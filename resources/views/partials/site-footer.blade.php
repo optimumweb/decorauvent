@@ -11,7 +11,7 @@
         <div class="container">
             <div class="level">
                 <div class="level-left">
-                    @if ($logoInverted = $site->theme->setting('logo_inverted'))
+                    @if ($logoInverted = $site->theme()->setting('logo_inverted'))
                         <div class="level-item">
                             <a href="{{ $site->path() }}">
                                 <img
@@ -27,7 +27,7 @@
                 <div class="level-right">
                     <div class="level-item">
                         <div class="columns is-variable is-8">
-                            @if ($businessAddress = $site->theme->setting('business_address'))
+                            @if ($businessAddress = $site->theme()->setting('business_address'))
                                 <div class="column is-narrow">
                                     <div class="media">
                                         <div class="media-left">
@@ -50,13 +50,13 @@
                                     </div>
 
                                     <div class="media-content">
-                                        @if ($businessPhone = $site->theme->setting('business_phone'))
+                                        @if ($businessPhone = $site->theme()->setting('business_phone'))
                                             <p>
                                                 {{ $businessPhone }}
                                             </p>
                                         @endif
 
-                                        @if ($businessTollfree = $site->theme->setting('business_tollfree'))
+                                        @if ($businessTollfree = $site->theme()->setting('business_tollfree'))
                                             <p>
                                                 {{ $businessTollfree }}
                                             </p>
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
 
-                            @if ($businessEmail = $site->theme->setting('business_email'))
+                            @if ($businessEmail = $site->theme()->setting('business_email'))
                                 <div class="column is-narrow">
                                     <div class="media">
                                         <div class="media-left">

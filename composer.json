@@ -13,7 +13,8 @@
   "license": "proprietary",
   "require": {
     "php": "^8.0",
-    "pipedrive/pipedrive": "^4.0"
+    "pipedrive/pipedrive": "^4.0",
+    "google/cloud-recaptcha-enterprise": "^1.4"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5.10"

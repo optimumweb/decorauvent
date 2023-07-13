@@ -25,11 +25,11 @@
             @endforeach
         @endisset
 
-        @if ($favicon = $site->theme->setting('favicon'))
+        @if ($favicon = $site->theme()->setting('favicon'))
             <link rel="icon" href="{{ storageUrl($favicon) }}" />
         @endif
 
-        @if ($googleAnalyticsId = $site->theme->setting('google_analytics_id'))
+        @if ($googleAnalyticsId = $site->theme()->setting('google_analytics_id'))
             <!-- Google tag (gtag.js) -->
             <script async src="https://www.googletagmanager.com/gtag/js?id={{ $googleAnalyticsId }}"></script>
             <script>
@@ -41,8 +41,8 @@
             </script>
         @endif
 
-        @if ($matomoEndpoint = $site->theme->setting('matomo_endpoint'))
-            @if ($matomoSiteId = $site->theme->setting('matomo_site_id'))
+        @if ($matomoEndpoint = $site->theme()->setting('matomo_endpoint'))
+            @if ($matomoSiteId = $site->theme()->setting('matomo_site_id'))
                 <!-- Matomo -->
                 <script>
                     var _paq = window._paq = window._paq || [];
@@ -67,17 +67,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@300;400;700&family=Sofia+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
         <!-- /Google Fonts -->
 
-        <link rel="stylesheet" href="{{ $site->theme->asset(path: 'css/theme.css', version: time()) }}">
+        <link rel="stylesheet" href="{{ $site->theme()->asset(path: 'css/theme.css', version: time()) }}">
 
-        @if ($fontawesome = $site->theme->config('fontawesome'))
+        @if ($fontawesome = $site->theme()->config('fontawesome'))
             <!-- FontAwesome -->
             <script src="https://kit.fontawesome.com/{{ $fontawesome }}.js" crossorigin="anonymous"></script>
             <!-- /FontAwesome -->
         @endif
 
         <!-- AOS -->
-        <link rel="stylesheet" href="{{ $site->theme->asset('vendor/aos/aos.css') }}" />
-        <script src="{{ $site->theme->asset('vendor/aos/aos.js') }}"></script>
+        <link rel="stylesheet" href="{{ $site->theme()->asset('vendor/aos/aos.css') }}" />
+        <script src="{{ $site->theme()->asset('vendor/aos/aos.js') }}"></script>
         <noscript>
             <style type="text/css">
                 [data-aos] {
@@ -89,16 +89,23 @@
         <!-- /AOS -->
 
         <!-- jQuery -->
-        <script src="{{ $site->theme->asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ $site->theme()->asset('vendor/jquery/jquery.min.js') }}"></script>
         <!-- /jQuery -->
 
         <!-- stonehenge.js -->
-        <link rel="stylesheet" href="{{ $site->theme->asset('vendor/stonehenge.js/stonehenge.css') }}" />
-        <script src="{{ $site->theme->asset('vendor/stonehenge.js/stonehenge.js') }}"></script>
+        <link rel="stylesheet" href="{{ $site->theme()->asset('vendor/stonehenge.js/stonehenge.css') }}" />
+        <script src="{{ $site->theme()->asset('vendor/stonehenge.js/stonehenge.js') }}"></script>
         <!-- /stonehenge.js -->
 
+        @if ($googleRecaptchaSiteKey = $site->theme()->setting('google_recaptcha_site_key'))
+            <!-- Google reCAPTCHA v3 -->
+            <meta name="google-recaptcha-site-key" content="{{ $googleRecaptchaSiteKey }}" />
+            <script src="https://www.google.com/recaptcha/enterprise.js?render={{ $googleRecaptchaSiteKey }}"></script>
+            <!-- /Google reCAPTCHA v3 -->
+        @endif
+
         <!-- Theme JS -->
-        <script src="{{ $site->theme->asset(path: 'js/theme.js', version: time()) }}"></script>
+        <script src="{{ $site->theme()->asset(path: 'js/theme.js', version: time()) }}"></script>
         <!-- /Theme JS -->
 
         <!-- Header Code -->
