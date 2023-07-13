@@ -51,7 +51,7 @@ $(document)
                             'X-CSRF-TOKEN': CSRF_TOKEN,
                         },
                         contentType: false,
-                        //processData: false,
+                        processData: false,
                     }).done(function (response) {
                         if (response.length > 0) {
                             response.forEach((file) => {
