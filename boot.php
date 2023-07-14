@@ -21,6 +21,35 @@ if (isset($requestData['free_estimate'])) {
         $freeEstimateData = $requestData['free_estimate'];
 
         if (isset($googleRecaptchaAssessment) && $googleRecaptchaAssessment === true) {
+            // process files
+            if (isset($freeEstimateData['files']['value'])) {
+                $filepaths = [];
+
+                foreach ($freeEstimateData['files']['value'] as &$file) {
+                    if (isset($file['content'], $file['name'])) {
+                        try {
+                            $filepaths[] = $filepath = mkfile($file['content']);
+
+                            $storageKey = \Illuminate\Support\Facades\Storage::putFile(
+                                path: "upload",
+                                file: $filepath,
+                                options: 'public',
+                            );
+
+                            if (isset($storageKey)) {
+                                $url = \Illuminate\Support\Facades\Storage::url($storageKey);
+
+                                if (isset($url)) {
+                                    $file = $url;
+                                }
+                            }
+                        } catch (\Throwable $e) {
+                            \Sentry\captureException($e);
+                        }
+                    }
+                }
+            }
+
             try {
                 $freeEstimateNotify = $site->theme()->setting('free_estimate_notify');
 
@@ -109,25 +138,17 @@ if (isset($requestData['free_estimate'])) {
                                 }
                             }
 
-                            if (isset($freeEstimateData['files'])) {
-                                if (function_exists('curl_file_create')) {
-                                    foreach ($freeEstimateData['files'] as $file) {
-                                        if (isset($file['name'], $file['content'])) {
-                                            try {
-                                                $filepath = mkfile($file['content']);
+                            if (isset($filepaths)) {
+                                foreach ($filepaths as $filepath) {
+                                    try {
+                                        $pipedriveFile = [
+                                            'file' => $filepath,
+                                            'dealId' => $pipedriveDealId,
+                                        ];
 
-                                                $pipedriveFile = [
-                                                    'file' => $filepath,
-                                                    'dealId' => $pipedriveDealId,
-                                                ];
-
-                                                $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
-                                            } catch (\Throwable $e) {
-                                                \Sentry\captureException($e);
-                                            }
-                                        } else {
-                                            \Sentry\captureMessage("Invalid file for Pipedrive: " . print_r($file, true));
-                                        }
+                                        $addFileResponse = $pipedriveClient->getFiles()->addFile($pipedriveFile);
+                                    } catch (\Throwable $e) {
+                                        \Sentry\captureException($e);
                                     }
                                 }
                             }
@@ -144,7 +165,7 @@ if (isset($requestData['free_estimate'])) {
                 \Sentry\captureException($e);
             }
         } else {
-            throw new \Exception("Free Estimate Request with Invalid Google reCAPTCHA");
+            throw new \Exception("Free Estimate Request with Invalid Google reCAPTCHA: ", print_r($freeEstimateData, true));
         }
     } catch (\Throwable $e) {
         \Sentry\captureException($e);

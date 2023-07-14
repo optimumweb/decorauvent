@@ -12,7 +12,7 @@
 {{ $field['label'] }}
 </td>
 <td>
-{!! $field['value'] ?? '' !!}
+{!! collect($field['value'] ?? '')->join(PHP_EOL) !!}
 </td>
 </tr>
 @endisset

@@ -15,7 +15,8 @@
         "php": "^8.0",
         "ext-curl": "*",
         "pipedrive/pipedrive": "^4.0",
-        "google/cloud-recaptcha-enterprise": "^1.4"
+        "google/cloud-recaptcha-enterprise": "^1.4",
+        "guzzlehttp/promises": "^1.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5.10"
