@@ -1,59 +1,24 @@
 <?php
 
-use Google\Cloud\RecaptchaEnterprise\V1\RecaptchaEnterpriseServiceClient;
-use Google\Cloud\RecaptchaEnterprise\V1\Event;
-use Google\Cloud\RecaptchaEnterprise\V1\Assessment;
-use Google\Cloud\RecaptchaEnterprise\V1\TokenProperties\InvalidReason;
-
-function assessGoogleRecaptcha(string $token, string $projectId = null, string $siteKey = null, float $minimumScore = null)
+function grecaptchaVerify(string $token, string $secret = null)
 {
-    $projectId ??= site()->theme()->setting('google_project_id');
-    $siteKey ??= site()->theme()->setting('google_recaptcha_site_key');
-    $minimumScore ??= site()->theme()->setting('google_recaptcha_min_score');
+    $secret ??= site()->theme()->setting('grecaptcha_secret_key');
 
-    $client = new RecaptchaEnterpriseServiceClient([
-        'credentials' => site()->theme()->path('credentials/google-credentials.json'),
+    $client = new GuzzleHttp\Client([
+        'base_uri' => 'https://www.google.com/recaptcha/api/',
     ]);
 
-    $projectName = $client->projectName($projectId);
+    $response = $client->post('siteverify', [
+        'form_params' => [
+            'secret' => $secret,
+            'response' => $token,
+            'remoteip' => $_SERVER['REMOTE_ADDR'],
+        ],
+    ]);
 
-    $event = (new Event())
-        ->setSiteKey($siteKey)
-        ->setToken($token);
+    $body = $response->getBody()->getContents();
 
-    $assessment = (new Assessment())
-        ->setEvent($event);
-
-    try {
-        $response = $client->createAssessment(
-            $projectName,
-            $assessment
-        );
-
-        if ($response->getTokenProperties()->getValid()) {
-            $score = $response->getRiskAnalysis()->getScore();
-
-            if (isset($minimumScore)) {
-                $minimumScore = (float) $minimumScore;
-
-                if ($score >= $minimumScore) {
-                    return true;
-                } else {
-                    \Sentry\captureMessage("Google reCAPTCHA Assessment: Score below minimum: {$score} / {$minimumScore}");
-                }
-            } else {
-                return true;
-            }
-        } else {
-            $invalidReason = $response->getTokenProperties()->getInvalidReason();
-            $invalidReasonName = InvalidReason::name($invalidReason);
-            \Sentry\captureMessage("Google reCAPTCHA Assessment Failed: {$invalidReason} - {$invalidReasonName}");
-        }
-    } catch (exception $e) {
-        \Sentry\captureException($e);
-    }
-
-    return false;
+    return json_decode($body, true);
 }
 
 function mkfile(string $base64)

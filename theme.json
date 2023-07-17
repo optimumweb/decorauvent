@@ -121,18 +121,13 @@
             "type": "text"
         },
         {
-            "name": "google_project_id",
-            "title": "Google Project ID",
-            "type": "text"
-        },
-        {
-            "name": "google_recaptcha_site_key",
+            "name": "grecaptcha_site_key",
             "title": "Google reCAPTCHA Site Key",
             "type": "text"
         },
         {
-            "name": "google_recaptcha_min_score",
-            "title": "Google reCAPTCHA Minimum Score",
+            "name": "grecaptcha_secret_key",
+            "title": "Google reCAPTCHA Secret Key",
             "type": "text"
         }
     ],

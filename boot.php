@@ -8,9 +8,9 @@ $site = site();
 $request = request();
 $requestData = $request->all();
 
-if (isset($requestData['google_recaptcha_token'])) {
+if (isset($requestData['grecaptcha_token'])) {
     try {
-        $googleRecaptchaAssessment = assessGoogleRecaptcha($requestData['google_recaptcha_token']);
+        $grecaptchaResponse = grecaptchaVerify($requestData['grecaptcha_token']);
     } catch (\Throwable $e) {
         \Sentry\captureException($e);
     }
@@ -20,7 +20,7 @@ if (isset($requestData['free_estimate'])) {
     try {
         $freeEstimateData = $requestData['free_estimate'];
 
-        if (isset($googleRecaptchaAssessment) && $googleRecaptchaAssessment === true) {
+        if (isset($grecaptchaResponse) && $grecaptchaResponse['success'] === true) {
             // process files
             if (isset($freeEstimateData['files']['value'])) {
                 $filepaths = [];
@@ -165,7 +165,7 @@ if (isset($requestData['free_estimate'])) {
                 \Sentry\captureException($e);
             }
         } else {
-            throw new \Exception("Free Estimate Request with Invalid Google reCAPTCHA");
+            throw new \Exception("Free Estimate Request with Invalid Google reCAPTCHA: " . print_r($grecaptchaResponse ?? null));
         }
     } catch (\Throwable $e) {
         \Sentry\captureException($e);

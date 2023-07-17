@@ -97,10 +97,10 @@
         <script src="{{ $site->theme()->asset('vendor/stonehenge.js/stonehenge.js') }}"></script>
         <!-- /stonehenge.js -->
 
-        @if ($googleRecaptchaSiteKey = $site->theme()->setting('google_recaptcha_site_key'))
+        @if ($grecaptchaSiteKey = $site->theme()->setting('grecaptcha_site_key'))
             <!-- Google reCAPTCHA v3 -->
-            <meta name="google-recaptcha-site-key" content="{{ $googleRecaptchaSiteKey }}" />
-            <script src="https://www.google.com/recaptcha/enterprise.js?render={{ $googleRecaptchaSiteKey }}"></script>
+            <meta name="grecaptcha-site-key" content="{{ $grecaptchaSiteKey }}" />
+            <script src="https://www.google.com/recaptcha/api.js?render={{ $grecaptchaSiteKey }}"></script>
             <!-- /Google reCAPTCHA v3 -->
         @endif
 

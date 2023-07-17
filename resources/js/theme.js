@@ -1,7 +1,7 @@
 $(document)
     .ready(function () {
         const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        const GOOGLE_RECAPTCHA_SITE_KEY = $('meta[name="google-recaptcha-site-key"]').attr('content');
+        const GRECAPTCHA_SITE_KEY = $('meta[name="grecaptcha-site-key"]').attr('content');
 
         const $window = $(window);
         const $body = $('body');
@@ -59,24 +59,26 @@ $(document)
                 e.preventDefault();
                 $(this).parents('.tag').remove();
             })
-            .on('submit', 'form.recaptcha', function (e) {
+            .on('submit', 'form.grecaptcha', function (e) {
                 let $form = $(this),
-                    token = $form.data('google-recaptcha-token');
+                    token = $form.data('grecaptcha-token');
 
                 if (! token) {
-                    if (GOOGLE_RECAPTCHA_SITE_KEY) {
+                    if (GRECAPTCHA_SITE_KEY) {
                         e.preventDefault();
 
                         $loading.addClass('is-active');
 
-                        grecaptcha.enterprise.ready(async () => {
-                            token = await grecaptcha.enterprise.execute(GOOGLE_RECAPTCHA_SITE_KEY, {action: 'LOGIN'});
-
-                            $form
-                                .data('google-recaptcha-token', token)
-                                .append(`<input type="hidden" name="google_recaptcha_token" value="${token}" />`)
-                                .submit();
+                        grecaptcha.ready(function() {
+                            grecaptcha.execute(GRECAPTCHA_SITE_KEY, {action: 'submit'}).then(function(token) {
+                                $form
+                                    .data('grecaptcha-token', token)
+                                    .append(`<input type="hidden" name="grecaptcha_token" value="${token}" />`)
+                                    .submit();
+                            });
                         });
+                    } else {
+                        console.log("GRECAPTCHA_SITE_KEY not defined!");
                     }
                 }
             });
