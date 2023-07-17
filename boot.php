@@ -165,7 +165,7 @@ if (isset($requestData['free_estimate'])) {
                 \Sentry\captureException($e);
             }
         } else {
-            throw new \Exception("Free Estimate Request with Invalid Google reCAPTCHA: ", print_r($freeEstimateData, true));
+            throw new \Exception("Free Estimate Request with Invalid Google reCAPTCHA: " . print_r($freeEstimateData, true));
         }
     } catch (\Throwable $e) {
         \Sentry\captureException($e);
