@@ -29,6 +29,12 @@
             <link rel="icon" href="{{ storageUrl($favicon) }}" />
         @endif
 
+        @if ($cookieYesSiteId = $site->theme()->setting('cookieyes_site_id'))
+            <!-- Start cookieyes banner -->
+            <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/{{ $cookieYesSiteId }}/script.js"></script>
+            <!-- End cookieyes banner -->
+        @endif
+
         @if ($googleAnalyticsId = $site->theme()->setting('google_analytics_id'))
             <!-- Google tag (gtag.js) -->
             <script async src="https://www.googletagmanager.com/gtag/js?id={{ $googleAnalyticsId }}"></script>
