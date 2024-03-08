@@ -81,7 +81,29 @@ $(document)
                         console.log("GRECAPTCHA_SITE_KEY not defined!");
                     }
                 }
-            });
+            })
+            .on('submit', 'form.grecaptcha-enabled', function (e) {
+                let $form = $(this),
+                    siteKey = $form.data('grecaptcha-site-key'),
+                    token = $form.data('grecaptcha-token');
+
+                if (! token) {
+                    if (siteKey) {
+                        e.preventDefault();
+
+                        grecaptcha.ready(function() {
+                            grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
+                                $form
+                                    .data('grecaptcha-token', token)
+                                    .append(`<input type="hidden" name="_grecaptcha_token" value="${token}" />`)
+                                    .submit();
+                            });
+                        });
+                    } else {
+                        console.log("Google reCAPTCHA Site Key not defined!");
+                    }
+                }
+            });;
     });
 
 window.base64Encode = file => new Promise((resolve, reject) => {
