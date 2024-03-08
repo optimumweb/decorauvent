@@ -52,13 +52,17 @@
                                     <div class="media-content">
                                         @if ($businessPhone = $site->theme()->setting('business_phone'))
                                             <p>
-                                                {{ $businessPhone }}
+                                                <a
+                                                    href="tel:{{ preg_replace('/[^0-9.]+/', '', $businessPhone) }}"
+                                                >{{ $businessPhone }}</a>
                                             </p>
                                         @endif
 
                                         @if ($businessTollfree = $site->theme()->setting('business_tollfree'))
                                             <p>
-                                                {{ $businessTollfree }}
+                                                <a
+                                                    href="tel:{{ preg_replace('/[^0-9.]+/', '', $businessTollfree) }}"
+                                                >{{ $businessTollfree }}</a>
                                             </p>
                                         @endif
                                     </div>
@@ -74,7 +78,9 @@
 
                                         <div class="media-content">
                                             <p>
-                                                <a href="mailto:{{ $businessEmail }}">{{ $businessEmail }}</a>
+                                                <a
+                                                    href="mailto:{{ $businessEmail }}"
+                                                >{{ $businessEmail }}</a>
                                             </p>
                                         </div>
                                     </div>

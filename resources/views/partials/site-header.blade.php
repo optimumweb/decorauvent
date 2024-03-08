@@ -12,10 +12,13 @@
                 <div class="column is-narrow">
                     <div class="field is-grouped">
                         @if ($businessPhone = $site->theme()->setting('business_phone'))
-                            <div class="control">
+                            <a
+                                class="control"
+                                href="tel:{{ preg_replace('/[^0-9.]+/', '', $businessPhone) }}"
+                            >
                                 <span class="icon"><i class="fa-solid fa-phone"></i></span>
                                 <span>{{ $businessPhone }}</span>
-                            </div>
+                            </a>
                         @endif
 
                         @forelse ($translations ?? [] as $translation)
